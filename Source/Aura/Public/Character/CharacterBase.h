@@ -12,7 +12,7 @@ class AURA_API ACharacterBase : public ACharacter
 
 public:
 	ACharacterBase();
-
+	//ÎäÆ÷²å²Û
 	UPROPERTY(EditAnywhere,Category="Combat")
 	TObjectPtr<USkeletalMeshComponent> m_weapon;
 
