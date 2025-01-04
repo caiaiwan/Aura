@@ -7,6 +7,8 @@
 #include "AuraPlayerController.generated.h"
 
 class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue;
 
 UCLASS()
 class AURA_API AAuraPlayerController : public APlayerController
@@ -15,12 +17,24 @@ class AURA_API AAuraPlayerController : public APlayerController
 
 public:
 	AAuraPlayerController();
+
 protected:
 	virtual void BeginPlay() override;
+
+	//重写输入主键
+	virtual void SetupInputComponent() override;
+
 private:
 
 	//输入映射
 	UPROPERTY(EditAnywhere , Category = "Input")
 	TObjectPtr<UInputMappingContext> AuraContext;
-	
+
+	//输入动作
+	UPROPERTY(EditAnywhere, Category = "Input")
+	TObjectPtr<UInputAction> MoveAction;
+
+	//移动函数
+	void Move(const FInputActionValue& InputActionValue);
+
 };
