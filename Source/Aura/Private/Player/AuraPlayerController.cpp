@@ -2,14 +2,80 @@
 
 
 #include "Player/AuraPlayerController.h"
-#include <EnhancedInputSubsystems.h>
-#include <EnhancedInputComponent.h>
+#include"Interaction/EnemyInterface.h"
+#include "EnhancedInputSubsystems.h"
+#include "EnhancedInputComponent.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
 	//将内容复制到所有客户端
 	bReplicates = true;
 }
+
+void AAuraPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+
+	CursorTrace();
+}
+
+void AAuraPlayerController::CursorTrace()
+{
+	//获得光标的选择物
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
+
+	//如果没选择到就结束
+	if (!CursorHit.bBlockingHit) return;
+
+	
+	LastActor = ThisActor;
+	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
+
+	
+	/*对于选择的Actor一共有几种情况
+	* 1.Last和This都为空：不做
+	* 2.Last为空，This不为空：This高亮
+	* 3.Last不为空，This为空：取消Last高亮
+	* 4.Last和This都不为空：
+	*   a.Last==This: 不做
+	*	b.Last!=This: 取消Last高亮，This高亮
+	*/
+
+	//Last为空
+	if (!LastActor) {
+		
+		if (!ThisActor) {
+			//This为空
+		}
+		else {
+			//This不为空
+			ThisActor->HighlightActor();
+		}
+	}
+	else {
+		//Last不为空
+		if (!ThisActor) {
+			//This为空
+			LastActor->UnHighlightActor();
+		}
+		else {
+			//This不为空
+			if (LastActor != ThisActor) {
+				//This!=Last
+				LastActor->UnHighlightActor();
+				ThisActor->HighlightActor();
+			}
+			else {
+				//This==Last
+			}
+		}
+	}
+
+
+
+}
+
 
 void AAuraPlayerController::BeginPlay()
 {
@@ -61,6 +127,7 @@ void AAuraPlayerController::SetupInputComponent()
 
 }
 
+//移动
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 {
 	//获得2维向量
@@ -85,5 +152,7 @@ void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 	}
 
 }
+
+
 
 

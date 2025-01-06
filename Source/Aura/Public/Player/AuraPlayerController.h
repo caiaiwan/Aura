@@ -8,6 +8,7 @@
 
 class UInputMappingContext;
 class UInputAction;
+class IEnemyInterface;
 struct FInputActionValue;
 
 UCLASS()
@@ -18,12 +19,14 @@ class AURA_API AAuraPlayerController : public APlayerController
 public:
 	AAuraPlayerController();
 
+	virtual void PlayerTick(float DeltaTime) override;
+
 protected:
 	virtual void BeginPlay() override;
 
 	//重写输入主键
 	virtual void SetupInputComponent() override;
-
+	
 private:
 
 	//输入映射
@@ -36,5 +39,12 @@ private:
 
 	//移动函数
 	void Move(const FInputActionValue& InputActionValue);
+
+	//光标追踪敌人
+	void CursorTrace();
+
+	//追踪的敌人
+	IEnemyInterface* ThisActor;
+	IEnemyInterface* LastActor;
 
 };

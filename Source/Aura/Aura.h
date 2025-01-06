@@ -4,3 +4,5 @@
 
 #include "CoreMinimal.h"
 
+//”Œœ∑…Ë÷√
+#define CUSTOME_DEPTH_RED 250
