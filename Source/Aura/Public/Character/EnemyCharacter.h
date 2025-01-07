@@ -25,6 +25,6 @@ public:
 	//È¡Ïû¸ßÁÁ
 	virtual void UnHighlightActor() override;
 
-
+	virtual void BeginPlay() override;
 
 };

@@ -15,7 +15,8 @@ AEnemyCharacter::AEnemyCharacter()
 	AblilitySystemComponent = CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");
 	//允许复制
 	AblilitySystemComponent->SetIsReplicated(true);
-
+	//迷你模式
+	AblilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 	//创建属性集
 	AttributeSet = CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
 
@@ -39,4 +40,12 @@ void AEnemyCharacter::UnHighlightActor()
 	//关闭
 	GetMesh()->SetRenderCustomDepth(false);
 	m_weapon->SetRenderCustomDepth(false);
+}
+
+void AEnemyCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	//初始化并绑定关系
+	AblilitySystemComponent->InitAbilityActorInfo(this, this);
 }

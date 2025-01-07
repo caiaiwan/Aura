@@ -33,4 +33,6 @@ public:
 	// Ù–‘ºØ
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
+
+
 };

@@ -5,12 +5,15 @@
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 
+
 AAuraPlayerState::AAuraPlayerState()
 {
 	//创建能力系统
 	AblilitySystemComponent = CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");
 	//允许复制
 	AblilitySystemComponent->SetIsReplicated(true);
+	//设置混合1模式
+	AblilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 
 	//创建属性集
 	AttributeSet = CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
@@ -28,3 +31,5 @@ UAttributeSet* AAuraPlayerState::GetAttributeSet() const
 {
 	return AttributeSet;
 }
+
+

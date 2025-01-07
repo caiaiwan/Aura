@@ -37,6 +37,6 @@ public:
 	TObjectPtr<UAttributeSet> AttributeSet;
 
 protected:
-	
+
 	virtual void BeginPlay() override;
 };
