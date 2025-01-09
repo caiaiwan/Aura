@@ -30,7 +30,7 @@ public:
 
 	//能力系统
 	UPROPERTY()
-	TObjectPtr<UAbilitySystemComponent> AblilitySystemComponent;
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 
 	//属性集
 	UPROPERTY()

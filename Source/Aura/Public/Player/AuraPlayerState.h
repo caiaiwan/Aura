@@ -26,9 +26,10 @@ public:
 	//添加getter
 	UAttributeSet* GetAttributeSet() const;
 
+protected:
 	//能力系统
 	UPROPERTY()
-	TObjectPtr<UAbilitySystemComponent> AblilitySystemComponent;
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 
 	//属性集
 	UPROPERTY()
