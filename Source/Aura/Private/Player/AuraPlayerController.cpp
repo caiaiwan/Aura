@@ -87,11 +87,13 @@ void AAuraPlayerController::BeginPlay()
 	//从玩家本地获取增强输入子系统
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
 	
-	check(Subsystem);
-	
-	//将输入映射添加到子系统，优先级为0
-	Subsystem->AddMappingContext(AuraContext, 0);
+	if (Subsystem) {
 
+		//将输入映射添加到子系统，优先级为0
+		Subsystem->AddMappingContext(AuraContext, 0);
+	}
+	
+	
 	//显示鼠标光标
 	bShowMouseCursor = true;
 
