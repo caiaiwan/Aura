@@ -8,7 +8,9 @@
 
 UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetControllerParams& WCParams)
 {
+	
 	if (!OverlayWidgetController) {
+		//»ñµÃ¸²¸Ç²ã
 		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
 	}
