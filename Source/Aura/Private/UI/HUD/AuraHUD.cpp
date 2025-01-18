@@ -21,6 +21,7 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 
 void AAuraHUD::InitOverlay(APlayerState* PS, APlayerController* PC, UAbilitySystemComponent* ASC, UAttributeSet* AS)
 {
+	//¼ì²é
 	checkf(OverlayWidgetClass, TEXT("Overlay Widget Init Failed!"));
 	checkf(OverlayWidgetControllerClass, TEXT("Overlay Widget Controller Init Failed!"));
 
