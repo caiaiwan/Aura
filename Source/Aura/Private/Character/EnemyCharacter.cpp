@@ -9,6 +9,7 @@
 
 AEnemyCharacter::AEnemyCharacter()
 {
+	//当前的碰撞体设置为对可见性碰撞通道进行阻止
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 
 	//创建能力系统

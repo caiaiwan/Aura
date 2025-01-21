@@ -24,7 +24,7 @@ public:
 	UAttributeSet* GetAttributeSet() const;
 
 
-	//ÎäÆ÷²å²Û
+	//ÎäÆ÷²å²Û(Õ½¶·Àà)
 	UPROPERTY(EditAnywhere,Category="Combat")
 	TObjectPtr<USkeletalMeshComponent> m_weapon;
 

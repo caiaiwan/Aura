@@ -10,7 +10,7 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 {
 	
 	if (!OverlayWidgetController) {
-		//获得覆盖层
+		//创建覆盖层(this为创造物划分生命周期，OverlayWidgetControllerClass为创建物的类)
 		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
 	}
@@ -33,7 +33,7 @@ void AAuraHUD::InitOverlay(APlayerState* PS, APlayerController* PC, UAbilitySyst
 	UOverlayWidgetController* WidgetController = GetOverlayWidgetController(WidgetControllerParams);
 
 	OverlayWidget->setWidgetController(WidgetController);
-
+	WidgetController->BroadcastInitalValues();
 
 	Widget->AddToViewport();
 }

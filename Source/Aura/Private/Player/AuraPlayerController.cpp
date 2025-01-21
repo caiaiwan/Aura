@@ -125,8 +125,6 @@ void AAuraPlayerController::SetupInputComponent()
 	//°ó¶¨Move
 	EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AAuraPlayerController::Move);
 
-
-
 }
 
 //ÒÆ¶¯
